@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Groove Me | Music For Every Moment</title>
+    <link rel="icon" href="../static/img/favicon.ico">
+    <link rel="stylesheet" href="../static/css/index.css">
+    <!-- <link rel="stylesheet" href="../static/css/index.scss"> -->
+    <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Pacifico&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+  </head>
+  <body>
+    <canvas id="canvas" width="640" height="480" style="display:none"></canvas>
+    <section id="main">
+      <div class="nav-item">
+          <a class="navbar-brand" href="/"><img src="../static/img/logo.png" height="100" width=""alt="Logo"></a>
+      </div>
+      <div class="main-row">
+          <div class="main-row-img">
+              <img class="head-phone-img" src="../static/img/emot.svg" alt="Ai Detector"/>
+          </div>
+          <div class="main-row-text">
+              <h1>Music For Every Moment</h1>
+              <p>May, whatever your mood be, here's music for you.</p>
+              <button class="btn" id="snap">
+                  Detect Emotion
+              </button>
+          </div>
+        </div>
+    </section>
+    <script>
+      const snap = document.getElementById('snap');
+      const canvas = document.getElementById('canvas');
+      const context = canvas.getContext('2d');
+      const width = canvas.width;
+      const height = canvas.height;
+
+      snap.addEventListener('click', function () {
+        navigator.mediaDevices.getUserMedia({ video: true })
+          .then(function (stream) {
+            const video = document.createElement('video');
+            video.srcObject = stream;
+            video.play();
+            setTimeout(function(){
+              context.drawImage(video, 0, 0, width, height);
+              canvas.toBlob(function (blob) {
+                const xhr = new XMLHttpRequest();
+                xhr.open('POST', '/save_image');
+                xhr.setRequestHeader('Content-Type', 'application/octet-stream');
+                xhr.send(blob);
+              }, 'image/jpeg', 0.9);
+              video.srcObject.getTracks().forEach(function (track) {
+                track.stop();
+              });
+              window.location.href = "/emotion";
+            }, 1000);
+          });
+      });
+    </script>
+  </body>
+</html>
+

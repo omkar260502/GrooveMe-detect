@@ -1,0 +1,77 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Groove Me | Music For Every Moment</title>
+    <link rel="icon" href="../static/img/favicon.ico">
+    <link rel="stylesheet" href="../static/css/index.css">
+    <!-- <link rel="stylesheet" href="../static/css/index.scss"> -->
+    <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Pacifico&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+  </head>
+  <body>
+    <canvas id="canvas" width="640" height="480" style="display:none"></canvas>
+    <section id="main">
+      <div class="nav-item">
+          <a class="navbar-brand" href="/"><img src="../static/img/logo.png" height="100" width=""alt="Logo"></a>
+      </div>
+      <div class="main-row">
+          <div class="main-row-img">
+              <img id="myImage" class="head-phone-img" src="" alt="{{emotion}}"/>
+          </div>
+          <div class="main-row-text">
+              <h1>It Seems {{ emotion }}</h1>
+              <p id="myParagraph"></p>
+              <button class="btn"><a id="musicLink" href="" style="text-decoration: none;color:white;">
+                  Music Playlist</a>
+              </button>
+              <button id="myLink" class="btn"><a href="/" style="text-decoration: none;color:white;">
+                Detect Again</a>
+            </button>
+          </div>
+        </div>
+    </section>
+    <script>
+        var emotion = "{{emotion}}"; // get the value of emotion from the HTML template
+        var myImage = document.getElementById("myImage");
+        var myParagraph = document.getElementById("myParagraph");
+        var musicLink = document.getElementById("musicLink")
+
+        if (emotion === "You are Happy") {
+          myImage.src = "../static/img/happy.svg";
+          myParagraph.textContent = "You seem to be in a happy mood! Enjoy the moment. Here's Music for you";
+          musicLink.href="https://open.spotify.com/playlist/0deORnapZgrxFY4nsKr9JA";
+        } else if (emotion === "You are Sad") {
+          myImage.src = "../static/img/sad.svg";
+          myParagraph.textContent = "You seem to be feeling sad. It's okay to take some time for yourself. Here's Music to make you feel good";
+          musicLink.href="https://open.spotify.com/playlist/37i9dQZF1DX7qK8ma5wgG1";
+        } else if (emotion === "You are Angry") {
+          myImage.src = "../static/img/angry.svg";
+          myParagraph.textContent = "You seem to be feeling angry. Take a deep breath and try to stay calm. Here's Music to calm you down";
+          musicLink.href="https://open.spotify.com/playlist/0KPEhXA3O9jHFtpd1Ix5OB";
+        }else if (emotion === "You are Disgusted") {
+          myImage.src = "../static/img/disgusted.svg";
+          myParagraph.textContent = "You seem to be feeling disgusted. It's okay to step away from whatever is causing this feeling and to take some time for yourself. Here's some music to help you unwind and find some peace.";
+          musicLink.href="https://open.spotify.com/playlist/3qgzMg4m5tvf16PzlPgGa9";
+        }else if (emotion === "You are Feared") {
+          myImage.src = "../static/img/fear.svg";
+          myParagraph.textContent = "You seem to be feeling afraid. Take some deep breaths and try to focus on calming your mind. Here's some music to help you relax and feel more at ease.";
+          musicLink.href="https://open.spotify.com/playlist/7rzS9iLiqjy65AsZd9qinf";
+        }else if (emotion === "You are Neutral") {
+          myImage.src = "../static/img/neutral.svg";
+          myParagraph.textContent = "You seem to be feeling neutral. Sometimes it's nice to take a break from intense emotions and just be in the present moment. Here's some music to help you focus and feel more centered.";
+          musicLink.href="https://open.spotify.com/track/53ISyyRA6cCY3U4pL9CSYG";
+        }else if (emotion === "You are Surprised") {
+          myImage.src = "../static/img/surprised.svg";
+          myParagraph.textContent = "You seem to be feeling surprised. It's okay to take a moment to process this unexpected feeling and to try to find some meaning in it. Here's some music to help you reflect and find some peace.";
+          musicLink.href="https://open.spotify.com/playlist/37i9dQZF1E4viEHwc4YdrF";
+        } else {
+          // handle unknown emotion values
+          myImage.src = "../static/img/question.svg";
+          myParagraph.textContent = "Sorry, we couldn't detect your emotion. Try Again";
+          musicLink.href="/";
+        }
+</script>
+  </body>
+</html>
