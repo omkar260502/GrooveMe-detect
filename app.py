@@ -63,8 +63,8 @@ def save_image():
 
 @app.route('/emotion')
 def show_emotion():
+    time.sleep(1)
     global predicted_emotion
-    time.sleep(2)
     return render_template('emotion.html', emotion=predicted_emotion)
 
 
