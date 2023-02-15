@@ -65,8 +65,7 @@ def save_image():
 def show_emotion():
     time.sleep(3)
     global predicted_emotion
-    pred=predicted_emotion
-    return render_template('emotion.html', emotion=pred)
+    return render_template('emotion.html', emotion=predicted_emotion)
 
 
 if __name__ == '__main__':
