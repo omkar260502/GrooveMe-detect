@@ -20,7 +20,7 @@ classifier = tf.keras.models.load_model(
 emotion_labels = {0: 'You are Angry', 1: 'You are Disgusted', 2: 'You are Feared',
                   3: 'You are Happy', 4: 'You are Neutral', 5: 'You are Sad', 6: 'You are Surprised'}
 
-predicted_emotion = None
+predicted_emotion = "Face Wasn't Detected"
 
 
 @app.route('/')
