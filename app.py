@@ -10,23 +10,13 @@ app = Flask(__name__)
 # run_with_ngrok(app)
 
 face_classifier = cv2.CascadeClassifier(
-<<<<<<< Updated upstream
-    r'./haarcascade_frontalface_default.xml')
-classifier = load_model(r'./model.h5')
-=======
-<<<<<<< HEAD
-    r'.\haarcascade_frontalface_default.xml')
+    './haarcascade_frontalface_default.xml')
 # classifier = load_model(r'.\model.h5')
 classifier = tf.keras.models.load_model(
-    r'.\model.h5', custom_objects=None, compile=True, options=None
+    './model.h5', custom_objects=None, compile=True, options=None
 )
 
 
-=======
-    r'./haarcascade_frontalface_default.xml')
-classifier = load_model(r'./model.h5')
->>>>>>> 55ed9567bb3ae758fd3025f5f3da6e55315782fd
->>>>>>> Stashed changes
 emotion_labels = {0: 'You are Angry', 1: 'You are Disgusted', 2: 'You are Feared',
                   3: 'You are Happy', 4: 'You are Neutral', 5: 'You are Sad', 6: 'You are Surprised'}
 
