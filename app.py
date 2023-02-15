@@ -7,8 +7,8 @@ import time
 app = Flask(__name__)
 
 face_classifier = cv2.CascadeClassifier(
-    r'.\haarcascade_frontalface_default.xml')
-classifier = load_model(r'.\model.h5')
+    r'./haarcascade_frontalface_default.xml')
+classifier = load_model(r'./model.h5')
 emotion_labels = {0: 'You are Angry', 1: 'You are Disgusted', 2: 'You are Feared',
                   3: 'You are Happy', 4: 'You are Neutral', 5: 'You are Sad', 6: 'You are Surprised'}
 
