@@ -13,7 +13,7 @@ face_classifier = cv2.CascadeClassifier(
     './haarcascade_frontalface_default.xml')
 # classifier = load_model(r'.\model1.h5')
 classifier = tf.keras.models.load_model(
-    './model.h5', custom_objects=None, compile=True, options=None
+    './model1.h5', custom_objects=None, compile=True, options=None
 )
 
 
